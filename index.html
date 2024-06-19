@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SIMFAS</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+</head>
+<body>
+    <header>
+        <nav>
+            <img class="simfas-logo" src="./assets/img/simfas.png" alt="SIMFAS logo">
+        </nav>
+    </header>
+    <main>
+        <section class="setup">
+            <div class="team">
+                <input type="text" id="home-team-name" class="name" name="home-team" placeholder="Mandante">
+                <textarea id="home-team-line" class="lineup" name="home-lineup" rows="10" placeholder="Titulares"></textarea>
+                <input type="text" id="home-team-level" class="level" name="home-level" placeholder="Nível">
+                <select id="home-team-mode" class="modos" name="modos">
+                    <option value=1>Defensivo</option>
+                    <option value=2>Moderado</option>
+                    <option value=3>Ofensivo</option>
+                </select>
+            </div>
+            <div class="team">
+                <input type="text" id="away-team-name" class="name" name="away-team" placeholder="Visitante">
+                <textarea id="away-team-line" class="lineup" name="away-lineup" rows="10" placeholder="Titulares"></textarea>
+                <input type="text" id="away-team-level" class="level" name="away-level" placeholder="Nível">
+                <select id="away-team-mode" class="modos" name="modos">
+                    <option value=1>Defensivo</option>
+                    <option value=2>Moderado</option>
+                    <option value=3>Ofensivo</option>
+                </select>
+            </div>
+        </section>
+        <section class="match" style="display: none;">
+            <div class="scoreboard">
+                <p class="match-home"></p=>
+                <p class="match-score">0:0</p>
+                <p class="match-away"></p>
+            </div>
+        </section>
+        <button class="simulate" onclick="simulate()"><span class="material-symbols-outlined">play_arrow</span> Simular partida</button>
+    </main>
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>
