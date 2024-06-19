@@ -1,26 +1,20 @@
-function getElementValue(id) {
-    return document.getElementById(id).value.trim();
-}
-
-function getElementLines(id) {
-    return document.getElementById(id).value.split('\n').map(item => item.trim());
-}
-
 function getTeams() {
-    return {
+    let data = {
         home: {
-            name: getElementValue('home-team-name'),
-            level: getElementValue('home-team-level'),
-            mode: getElementValue('home-team-mode'),
-            line: getElementLines('home-team-line')
+            name: document.getElementById('home-team-name').value.trim(),
+            level: document.getElementById('home-team-level').value.trim(),
+            mode: document.getElementById('home-team-mode').value,
+            line: document.getElementById('home-team-line').value.split('\n').map(item => item.trim())
         },
         away: {
-            name: getElementValue('away-team-name'),
-            level: getElementValue('away-team-level'),
-            mode: getElementValue('away-team-mode'),
-            line: getElementLines('away-team-line')
+            name: document.getElementById('away-team-name').value.trim(),
+            level: document.getElementById('away-team-level').value.trim(),
+            mode: document.getElementById('away-team-mode').value,
+            line: document.getElementById('away-team-line').value.split('\n').map(item => item.trim())
         }
     };
+
+    return(data);
 }
 
 function simulate() {
@@ -29,20 +23,24 @@ function simulate() {
     let setup = document.querySelector('.setup');
     let simu = document.querySelector('.simulate');
     let match = document.querySelector('.match');
-    let homeDisplay = document.querySelector('.match-home');
-    let scoreDisplay = document.querySelector('.match-score');
-    let awayDisplay = document.querySelector('.match-away');
+    let home = document.querySelector('.match-home');
+    let score = document.querySelector('.match-score');
+    let away = document.querySelector('.match-away');
+    let homeSummary = document.querySelector('.match-home-summary');
+    let awaySummary = document.querySelector('.match-away-summary');
 
     setup.style.display = 'none';
     simu.style.display = 'none';
     match.style.display = 'block';
 
-    homeDisplay.textContent = teams.home.name;
-    awayDisplay.textContent = teams.away.name;
+    home.textContent = teams.home.name;
+    away.textContent = teams.away.name;
 
-    const baseProbability = 25;
-    let homeGoalProbability = baseProbability;
-    let awayGoalProbability = baseProbability;
+    let roof = parseInt(teams.home.level) + parseInt(teams.away.level);
+    let homeScore = 0;
+    let awayScore = 0;
+    let homeGoalProbability = 25;
+    let awayGoalProbability = 25;
 
     if (teams.home.mode == "1") {
         homeGoalProbability -= 5;
@@ -66,30 +64,25 @@ function simulate() {
         awayGoalProbability += 15;
     }
 
-    let homeScore = simulateScore(teams.home.level, homeGoalProbability);
-    let awayScore = simulateScore(teams.away.level, awayGoalProbability);
-
-    scoreDisplay.textContent = `${homeScore}:${awayScore}`;
-}
-
-function simulateScore(teamLevel, goalProbability) {
-    let score = 0;
-    const roof = parseInt(teamLevel);
+    function getAuthor() {
+        return Math.floor(Math.random() * 5) + 1;
+    }
 
     for (let i = 0; i < 20; i++) {
         let action = Math.floor(Math.random() * (roof + 1));
         let attempt = Math.floor(Math.random() * 100) + 1;
 
-        if (action < roof) {
-            if (attempt <= goalProbability) {
-                score++;
+        if (action < parseInt(teams.home.level)) {
+            if (attempt <= homeGoalProbability) {
+                homeScore++
+                homeSummary.textContent += `${teams.home.line[getAuthor()]} '${Math.floor(Math.random() * 96) + 1}\n`
             }
-        } else {
-            if (attempt <= goalProbability) {
-                score++;
+        } else if (action > parseInt(teams.home.level)) {
+            if (attempt <= awayGoalProbability) {
+                awayScore++
+                awaySummary.textContent += `${teams.away.line[getAuthor()]} '${Math.floor(Math.random() * 96) + 1}\n`
             }
         }
     }
-
-    return score;
+    score.textContent = homeScore + ":" + awayScore;
 }

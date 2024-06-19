@@ -69,7 +69,7 @@ main {
 
 .match {
     width: 320px;
-    border-radius: 0.5rem;
+    border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -79,9 +79,16 @@ main {
     align-items: center;
     gap: 0.5rem;
     background-color: #fff;
-    margin: 0.5rem;
+    border: rgba(0, 0, 0, 0.05) solid 2px;
     padding: 0.5rem;
     border-radius: 100px;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    white-space: pre-line;
+    padding: 0.5rem 1rem;
 }
 
 .simulate {
