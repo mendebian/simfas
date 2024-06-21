@@ -39,29 +39,29 @@ function simulate() {
     let roof = parseInt(teams.home.level) + parseInt(teams.away.level);
     let homeScore = 0;
     let awayScore = 0;
-    let homeGoalProbability = 25;
-    let awayGoalProbability = 25;
+    let homeGoalProbability = 15;
+    let awayGoalProbability = 15;
 
     if (teams.home.mode == "1") {
-        homeGoalProbability -= 5;
-        awayGoalProbability -= 15;
+        homeGoalProbability -= 2;
+        awayGoalProbability -= 7;
     } else if (teams.home.mode == "2") {
-        homeGoalProbability += 8;
-        awayGoalProbability -= 8;
+        homeGoalProbability += 3;
+        awayGoalProbability -= 3;
     } else {
-        homeGoalProbability += 15;
-        awayGoalProbability += 5;
+        homeGoalProbability += 7;
+        awayGoalProbability += 2;
     }
 
     if (teams.away.mode == "1") {
-        homeGoalProbability -= 15;
-        awayGoalProbability -= 5;
+        homeGoalProbability -= 7;
+        awayGoalProbability -= 2;
     } else if (teams.away.mode == "2") {
-        homeGoalProbability -= 8;
-        awayGoalProbability += 8;
+        homeGoalProbability -= 3;
+        awayGoalProbability += 3;
     } else {
-        homeGoalProbability += 5;
-        awayGoalProbability += 15;
+        homeGoalProbability += 2;
+        awayGoalProbability += 7;
     }
 
     function getAuthor() {
