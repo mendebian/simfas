@@ -68,21 +68,23 @@ function simulate() {
         return Math.floor(Math.random() * 5) + 1;
     }
 
+    let timer = 0;
     for (let i = 0; i < 20; i++) {
         let action = Math.floor(Math.random() * (roof + 1));
         let attempt = Math.floor(Math.random() * 100) + 1;
 
         if (action < parseInt(teams.home.level)) {
             if (attempt <= homeGoalProbability) {
-                homeScore++
-                homeSummary.textContent += `${teams.home.line[getAuthor()]} '${Math.floor(Math.random() * 96) + 1}\n`
+                homeScore++;
+                homeSummary.textContent += `${teams.home.line[getAuthor()]} '${(timer * 5) + Math.floor(Math.random() * 6)}\n`
             }
         } else if (action > parseInt(teams.home.level)) {
             if (attempt <= awayGoalProbability) {
-                awayScore++
-                awaySummary.textContent += `${teams.away.line[getAuthor()]} '${Math.floor(Math.random() * 96) + 1}\n`
+                awayScore++;
+                awaySummary.textContent += `${teams.away.line[getAuthor()]} '${(timer * 5) + Math.floor(Math.random() * 6)}\n`
             }
         }
+        timer++
     }
     score.textContent = homeScore + ":" + awayScore;
 }

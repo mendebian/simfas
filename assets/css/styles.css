@@ -89,6 +89,7 @@ main {
     justify-content: space-between;
     white-space: pre-line;
     padding: 0.5rem 1rem;
+    font-size: 12px;
 }
 
 .simulate {
