@@ -108,6 +108,13 @@ main {
     cursor: pointer;
 }
 
+.match-history {
+    white-space: pre-line;
+    text-align: center;
+    margin-top: 1rem;
+    color: rgba(0, 0, 0, 0.1);
+}
+
 @media only screen and (max-width: 768px) {
     .setup {
         flex-direction: column;

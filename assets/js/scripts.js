@@ -28,13 +28,18 @@ function simulate() {
     let away = document.querySelector('.match-away');
     let homeSummary = document.querySelector('.match-home-summary');
     let awaySummary = document.querySelector('.match-away-summary');
+    let matchHistory = document.querySelector('.match-history');
+
+    let historic = localStorage.getItem('historic') ? localStorage.getItem('historic') : '';
 
     setup.style.display = 'none';
     simu.style.display = 'none';
     match.style.display = 'block';
+    matchHistory.style.display = 'block';
 
     home.textContent = teams.home.name;
     away.textContent = teams.away.name;
+    matchHistory.textContent = historic;
 
     let roof = parseInt(teams.home.level) + parseInt(teams.away.level);
     let homeScore = 0;
@@ -87,4 +92,7 @@ function simulate() {
         timer++
     }
     score.textContent = homeScore + ":" + awayScore;
+
+    historic = `${teams.home.name} ${homeScore}:${awayScore} ${teams.away.name}\n` + historic;
+    localStorage.setItem('historic', historic);
 }
