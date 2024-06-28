@@ -70,7 +70,7 @@ function simulate() {
     }
 
     function getAuthor() {
-        return Math.floor(Math.random() * 5) + 1;
+        return Math.floor(Math.random() * 10) + 1;
     }
 
     let timer = 0;
