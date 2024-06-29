@@ -48,8 +48,8 @@ function simulate() {
     let awayGoalProbability = 15;
 
     if (teams.home.mode == "1") {
-        homeGoalProbability -= 5;
-        awayGoalProbability -= 10;
+        homeGoalProbability -= 3;
+        awayGoalProbability -= 9;
     } else if (teams.home.mode == "2") {
         homeGoalProbability -= 2;
         awayGoalProbability -= 7;
@@ -60,13 +60,13 @@ function simulate() {
         homeGoalProbability += 7;
         awayGoalProbability += 2;
     } else {
-        homeGoalProbability += 10;
-        awayGoalProbability += 5;
+        homeGoalProbability += 9;
+        awayGoalProbability += 3;
     }
 
     if (teams.away.mode == "1") {
-        homeGoalProbability -= 10;
-        awayGoalProbability -= 5;
+        homeGoalProbability -= 9;
+        awayGoalProbability -= 3;
     } else if (teams.away.mode == "2") {
         homeGoalProbability -= 7;
         awayGoalProbability -= 2;
@@ -77,8 +77,8 @@ function simulate() {
         homeGoalProbability += 2;
         awayGoalProbability += 7;
     } else {
-        homeGoalProbability += 5;
-        awayGoalProbability += 10;
+        homeGoalProbability += 3;
+        awayGoalProbability += 9;
     }
 
     function getAuthor() {
