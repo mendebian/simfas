@@ -67,7 +67,7 @@ function simulate() {
     if (teams.away.mode == "1") {
         homeGoalProbability -= 10;
         awayGoalProbability -= 5;
-    } (teams.away.mode == "2") {
+    } else if (teams.away.mode == "2") {
         homeGoalProbability -= 7;
         awayGoalProbability -= 2;
     } else if (teams.away.mode == "3") {
